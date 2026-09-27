@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Час подорожей — Карпати</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <header class="hero" id="home">
+
+
+    <div class="hero__bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="ridge ridge--back" points="0,500 0,260 150,190 300,240 430,150 600,220 760,140 900,230 1050,170 1200,250 1200,500" />
+        <polygon class="ridge ridge--mid" points="0,500 0,330 200,240 380,300 560,210 720,290 900,220 1080,300 1200,260 1200,500" />
+        <polygon class="ridge ridge--front" points="0,500 0,400 180,330 360,380 540,300 720,370 900,320 1080,390 1200,340 1200,500" />
+        <polygon class="snow" points="430,150 460,180 400,180" />
+        <polygon class="snow" points="760,140 790,168 730,168" />
+        <polygon class="snow" points="1050,170 1075,195 1025,195" />
+      </svg>
+    </div>
+
+    <nav class="nav">
+      <a class="logo" href="#home">Carpathian Trails</a>
+      <ul class="nav__links">
+        <li><a href="#home">Головна</a></li>
+        <li><a href="#tours">Тури</a></li>
+        <li><a href="#lakes">Озера й полонини</a></li>
+        <li><a href="#hutsul">Гуцульщина</a></li>
+        <li><a href="#contacts">Контакти</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">Світла тема</button>
+    </nav>
+
+    <div class="hero__content">
+      <h1>Час подорожей</h1>
+      <p>Гори, полонини й хмари під ногами. Пізнавай Карпати, бережи їх і повертайся сюди знову.</p>
+    </div>
+
+    <ul class="types">
+      <li><a href="#tours">Гірські походи <span>Детальніше</span></a></li>
+      <li><a href="#lakes">Озера й полонини <span>Детальніше</span></a></li>
+      <li><a href="#hutsul">Культура Гуцульщини <span>Детальніше</span></a></li>
+    </ul>
+  </header>
+
+  <main>
+
+    <section class="section" id="tours">
+      <h2>Популярні тури</h2>
+      <p class="section__sub">популярні зараз</p>
+
+      <div class="cards">
+        <article class="card card--hoverla">
+          <img class="card__photo" src="images/goverla.jpg" alt="Вершина Говерла" loading="lazy">
+          <div class="card__text">
+            <h3>Говерла</h3>
+            <p>Чорногора · 2061 м</p>
+          </div>
+        </article>
+
+        <article class="card card--turkul">
+          <img class="card__photo" src="images/turkul.jpeg" alt="Гора Туркул на заході сонця" loading="lazy">
+          <div class="card__text">
+            <h3>Туркул</h3>
+            <p>Чорногора · 1933 м</p>
+          </div>
+        </article>
+
+        <article class="card card--shpytsi">
+          <img class="card__photo" src="images/shpytsi.jpg" alt="Кам'яні шпилі гори Шпиці" loading="lazy">
+          <div class="card__text">
+            <h3>Шпиці</h3>
+            <p>Чорногора · 1863 м</p>
+          </div>
+        </article>
+
+        <article class="card card--kukul">
+          <img class="card__photo" src="images/kukul.jpg" alt="Гора Кукул узимку" loading="lazy">
+          <div class="card__text">
+            <h3>Кукул</h3>
+            <p>Чорногора · 1539 м</p>
+          </div>
+        </article>
+      </div>
+      <a class="more" href="#lakes">Далі: озера й полонини</a>
+    </section>
+
+
+    <section class="section" id="lakes">
+      <h2>Озера й полонини</h2>
+      <p class="section__sub">де відпочиває погляд</p>
+
+      <div class="cards cards--wide">
+        <article class="card card--nesamovyte">
+          <img class="card__photo" src="images/nesamovyte.jpeg" alt="Озеро Несамовите на заході сонця" loading="lazy">
+          <div class="card__text">
+            <h3>Несамовите</h3>
+            <p>найвище озеро Чорногори · 1750 м</p>
+          </div>
+        </article>
+
+        <article class="card card--brebeneskul">
+          <img class="card__photo" src="images/brebeneskul.jpg" alt="Озеро Бребенескул серед зелених схилів" loading="lazy">
+          <div class="card__text">
+            <h3>Бребенескул</h3>
+            <p>найвище озеро України · 1801 м</p>
+          </div>
+        </article>
+
+        <article class="card card--drahobrat">
+          <img class="card__photo" src="images/drahobrat.jpg" alt="Гірське озеро на полонині Драгобрат" loading="lazy">
+          <div class="card__text">
+            <h3>Драгобрат</h3>
+            <p>гірська полонина й курорт</p>
+          </div>
+        </article>
+
+        <article class="card card--pozhyzhevska">
+          <img class="card__photo" src="images/pozhyzhevska.jpg" alt="Полонина Пожижевська під хмарами" loading="lazy">
+          <div class="card__text">
+            <h3>Пожижевська</h3>
+            <p>полонина під г. Говерла · 1822 м</p>
+          </div>
+        </article>
+      </div>
+      <a class="more" href="#hutsul">Далі: Гуцульщина</a>
+    </section>
+
+
+    <section class="section" id="hutsul">
+      <h2>Культура Гуцульщини</h2>
+      <p class="section__sub">традиції гірського краю</p>
+
+      <div class="cards cards--wide">
+        <article class="card card--banush">
+          <img class="card__photo" src="images/banush.jpg" alt="Бануш і бринза на дерев'яному столі" loading="lazy">
+          <div class="card__text">
+            <h3>Бануш і бринза</h3>
+            <p>кукурудзяна каша на вершках і овеча бринза</p>
+          </div>
+        </article>
+
+        <article class="card card--vyshyvka">
+          <img class="card__photo" src="images/vyshyvka.jpg" alt="Гуцульська вишиванка з орнаментом" loading="lazy">
+          <div class="card__text">
+            <h3>Гуцульська вишивка</h3>
+            <p>орнаменти кептарів і сорочок</p>
+          </div>
+        </article>
+
+        <article class="card card--trembita">
+          <img class="card__photo" src="images/trembita.jpg" alt="Гуцул грає на трембіті в горах" loading="lazy">
+          <div class="card__text">
+            <h3>Трембіта</h3>
+            <p>довгий дерев'яний ріг, голос полонин</p>
+          </div>
+        </article>
+
+        <article class="card card--church">
+          <img class="card__photo" src="images/cerkva.jpg" alt="Дерев'яна гуцульська церква" loading="lazy">
+          <div class="card__text">
+            <h3>Дерев'яні церкви</h3>
+            <p>гуцульська сакральна архітектура</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <section class="section" id="contacts">
+      <h2>Контакти</h2>
+      <p class="section__sub">залиш заявку на тур</p>
+      <form class="form" action="#" method="post">
+        <label for="name">Ім'я</label>
+        <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+
+        <label for="tour">Тур</label>
+        <select id="tour" name="tour">
+          <option>Говерла</option>
+          <option>Туркул</option>
+          <option>Шпиці</option>
+          <option>Кукул</option>
+        </select>
+
+        <label for="message">Повідомлення</label>
+        <textarea id="message" name="message" rows="4" placeholder="Коли плануєте їхати і скільки вас?" required></textarea>
+
+        <button type="submit">Надіслати заявку</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__contacts">
+      <h3>Контакти</h3>
+      <p>Івано-Франківська область, Україна</p>
+      <p>+380 00 000 00 00</p>
+      <p>info@carpathian-trails.ua</p>
+    </div>
+    <nav class="footer__links" aria-label="Розділи сайту">
+      <a href="#home">Головна</a>
+      <a href="#tours">Тури</a>
+      <a href="#lakes">Озера й полонини</a>
+      <a href="#hutsul">Гуцульщина</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
+    <p class="footer__copy">© 2026 Carpathian Trails</p>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        root.setAttribute('data-theme', 'light');
+        btn.textContent = 'Темна тема';
+        btn.setAttribute('aria-pressed', 'true');
+      }
+      btn.addEventListener('click', function () {
+        var isLight = root.getAttribute('data-theme') === 'light';
+        if (isLight) {
+          root.removeAttribute('data-theme');
+          btn.textContent = 'Світла тема';
+          btn.setAttribute('aria-pressed', 'false');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          root.setAttribute('data-theme', 'light');
+          btn.textContent = 'Темна тема';
+          btn.setAttribute('aria-pressed', 'true');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
