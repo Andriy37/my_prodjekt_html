@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #e5483b;
+  --text-color: #ffffff;
+  --bg-color: #050608;
+  --muted-color: #b9c0cc;
+  --line-color: rgba(255, 255, 255, 0.35);
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --font-main: "Josefin Sans", "Segoe UI", Arial, sans-serif;
+}
 
 :root {
   --primary-color: #e5483b;
