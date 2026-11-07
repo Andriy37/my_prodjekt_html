@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-компоненти — Carpathian Trails</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    function Header() {
+      return (
+        <header class="hero" style={{ padding: '2rem 1rem', textShadow: 'none' }}>
+          <div class="hero__content">
+            <h1>Carpathian Trails (React Version)</h1>
+            <p>Практична робота №19: Компоненти та Props</p>
+          </div>
+        </header>
+      );
+    }
+
+
+    function Card({ title, text, image }) {
+      return (
+        <article className="card p-4 border border-white/20 rounded-lg bg-slate-900/40">
+          {image && <img className="card__photo" src={image} alt={title} loading="lazy" />}
+          <div className="card__text" style={{ position: 'static', textAlign: 'left' }}>
+            <h3 style={{ color: '#ffffff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>{title}</h3>
+            <p style={{ fontSize: '0.85rem', color: '#e4e4e4' }}>{text}</p>
+          </div>
+        </article>
+      );
+    }
+
+
+    function Footer() {
+      return (
+        <footer class="footer">
+          <p class="footer__copy">© {new Date().getFullYear()} Carpathian Trails. React Edition.</p>
+        </footer>
+      );
+    }
+
+
+    function App() {
+      const tours = [
+        { id: 1, title: 'Говерла', text: 'Чорногора · 2061 м', image: 'images/goverla.jpg' },
+        { id: 2, title: 'Туркул', text: 'Чорногора · 1933 м', image: 'images/turkul.jpeg' },
+        { id: 3, title: 'Шпиці', text: 'Чорногора · 1863 м', image: 'images/shpytsi.jpg' },
+        { id: 4, title: 'Кукул', text: 'Чорногора · 1539 м', image: 'images/kukul.jpg' }
+      ];
+
+      return (
+        <div>
+          <Header />
+          <main className="section">
+            <h2>Популярні тури (React Map)</h2>
+            <div className="cards cards--wide">
+              {tours.map(tour => (
+                <Card 
+                  key={tour.id} 
+                  title={tour.title} 
+                  text={tour.text} 
+                  image={tour.image} 
+                />
+              ))}
+            </div>
+          </main>
+          <Footer />
+        </div>
+      );
+    }
+
+    const rootElement = document.getElementById('root');
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(<App />);
+  </script>
+</body>
+</html>
