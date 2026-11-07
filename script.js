@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+  // === ПРАКТИЧНЕ № 14: Основи DOM ===[cite: 7]
   const availableTours = ["Говерла", "Туркул", "Шпиці", "Кукул"];
   console.log("Доступні тури в Карпатах:", availableTours);
 
@@ -12,9 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     copyElement.textContent = `© ${currentYear} Carpathian Trails. Усі права захищено.`;
   }
 
-
-
-
+  // === ПРАКТИЧНЕ № 15: Перемикач теми ===[cite: 5]
   const root = document.documentElement;
   const themeBtn = document.getElementById('theme-toggle');
   
@@ -42,35 +40,96 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // === ПРАКТИЧНЕ № 18: GET-запит (Завантаження відгуків) ===
+  async function loadReviews() {
+    const reviewsContainer = document.getElementById('reviews-list');
+    if (!reviewsContainer) return;
 
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3');
+      
+      if (!response.ok) {
+        throw new Error(`Помилка сервера: ${response.status}`);
+      }
+
+      const posts = await response.json();
+      reviewsContainer.innerHTML = '';
+
+      posts.forEach(post => {
+        const reviewCard = document.createElement('article');
+        reviewCard.className = 'card p-4 border border-white/20 rounded-lg bg-slate-900/40';
+        reviewCard.innerHTML = `
+          <div class="card__text" style="position: static; text-align: left;">
+            <h3 style="color: var(--primary-color); font-size: 1.1rem; text-transform: capitalize; margin-bottom: 0.5rem;">
+              ${post.title}
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--muted-color);">${post.body}</p>
+          </div>
+        `;
+        reviewsContainer.appendChild(reviewCard);
+      });
+    } catch (error) {
+      console.error('Помилка GET-запиту:', error);
+      reviewsContainer.innerHTML = '<p style="color: var(--primary-color);">Не вдалося завантажити відгуки.</p>';
+    }
+  }
+
+  loadReviews();
+
+  // === ПРАКТИЧНЕ № 18: POST-запит (Форма зворотного зв'язку) ===[cite: 21]
   const contactForm = document.querySelector('.form');
   const messageBox = document.getElementById('form-message');
 
   if (contactForm && messageBox) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const nameInput = document.getElementById('name');
-      const emailInput = document.getElementById('email');
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn ? submitBtn.textContent : 'Надіслати';
 
-      const nameValue = nameInput ? nameInput.value.trim() : '';
-      const emailValue = emailInput ? emailInput.value.trim() : '';
+      const formData = {
+        name: document.getElementById('name')?.value.trim(),
+        email: document.getElementById('email')?.value.trim(),
+        tour: document.getElementById('tour')?.value,
+        message: document.getElementById('message')?.value.trim()
+      };
 
-      if (!nameValue) {
-        messageBox.textContent = 'Будь ласка, введіть ваше ім\'я.';
-        messageBox.style.color = 'var(--primary-color)';
-        return;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Надсилання...';
       }
+      messageBox.textContent = '';
 
-      if (!emailValue || !emailValue.includes('@')) {
-        messageBox.textContent = 'Помилка! Вкажіть коректний email з символом @.';
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+          throw new Error(`Помилка: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('Успішна відповідь API:', result);
+
+        messageBox.textContent = 'Успіх! Заявку відправлено на сервер.';
+        messageBox.style.color = '#4ade80';
+        contactForm.reset();
+
+      } catch (error) {
+        console.error('Помилка відправки:', error);
+        messageBox.textContent = 'Не вдалося надіслати форму. Перевірте з’єднання.';
         messageBox.style.color = 'var(--primary-color)';
-        return;
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
       }
-
-      messageBox.textContent = 'Дякуємо! Вашу заявку успішно надіслано.';
-      messageBox.style.color = '#4ade80';
-      contactForm.reset();
     });
   }
 });
