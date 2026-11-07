@@ -3,84 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>React-компоненти — Carpathian Trails</title>
+  <title>React useState & Events — Carpathian Trails</title>
   <link rel="stylesheet" href="style.css">
   
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
   <div id="root"></div>
 
   <script type="text/babel">
+    const { useState } = React;
 
-    function Header() {
+    // 1. Компонент Header із перемикачем теми через useState (Крок 4)
+    function Header({ theme, toggleTheme }) {
       return (
-        <header class="hero" style={{ padding: '2rem 1rem', textShadow: 'none' }}>
-          <div class="hero__content">
-            <h1>Carpathian Trails (React Version)</h1>
-            <p>Практична робота №19: Компоненти та Props</p>
+        <header className="hero p-6 text-center">
+          <div className="flex justify-between items-center max-w-6xl mx-auto mb-4">
+            <span className="font-bold text-xl text-white">Carpathian Trails (React)</span>
+            <button 
+              onClick={toggleTheme}
+              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors cursor-pointer"
+            >
+              Тема: {theme === 'dark' ? 'Темна' : 'Світла'}
+            </button>
+          </div>
+          <div className="hero__content">
+            <h1 className="text-3xl font-bold mb-2">Час подорожей</h1>
+            <p className="text-gray-300">Практична №20: useState & Інтерактивність</p>
           </div>
         </header>
       );
     }
 
+    // 2. Компонент Card з власним лічильником «вподобань» (Кроки 1-3)
+    function Card({ title, text, image, category }) {
+      const [likes, setLikes] = useState(0);
 
-    function Card({ title, text, image }) {
       return (
-        <article className="card p-4 border border-white/20 rounded-lg bg-slate-900/40">
-          {image && <img className="card__photo" src={image} alt={title} loading="lazy" />}
-          <div className="card__text" style={{ position: 'static', textAlign: 'left' }}>
-            <h3 style={{ color: '#ffffff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>{title}</h3>
-            <p style={{ fontSize: '0.85rem', color: '#e4e4e4' }}>{text}</p>
+        <article className="card p-4 border border-white/20 rounded-lg bg-slate-900/60 flex flex-col justify-between">
+          <div>
+            {image && <img className="card__photo w-full h-48 object-cover rounded mb-3" src={image} alt={title} loading="lazy" />}
+            <h3 className="text-white text-lg font-semibold mb-1">{title}</h3>
+            <p className="text-gray-300 text-sm mb-3">{text}</p>
+          </div>
+          <div className="flex justify-between items-center pt-2 border-t border-white/10">
+            <span className="text-xs text-gray-400 bg-white/10 px-2 py-1 rounded">{category}</span>
+            <button 
+              onClick={() => setLikes(likes + 1)}
+              className="px-3 py-1 bg-white/10 hover:bg-white/20 text-white text-sm rounded flex items-center gap-1 transition-colors"
+            >
+              ❤️ {likes}
+            </button>
           </div>
         </article>
       );
     }
 
-
-    function Footer() {
-      return (
-        <footer class="footer">
-          <p class="footer__copy">© {new Date().getFullYear()} Carpathian Trails. React Edition.</p>
-        </footer>
-      );
-    }
-
-
+    // 3. Головний компонент App з фільтром та загальним станом (Кроки 5-7)
     function App() {
+      const [theme, setTheme] = useState('dark');
+      const [filter, setFilter] = useState('Усі');
+
       const tours = [
-        { id: 1, title: 'Говерла', text: 'Чорногора · 2061 м', image: 'images/goverla.jpg' },
-        { id: 2, title: 'Туркул', text: 'Чорногора · 1933 м', image: 'images/turkul.jpeg' },
-        { id: 3, title: 'Шпиці', text: 'Чорногора · 1863 м', image: 'images/shpytsi.jpg' },
-        { id: 4, title: 'Кукул', text: 'Чорногора · 1539 м', image: 'images/kukul.jpg' }
+        { id: 1, title: 'Говерла', text: 'Чорногора · 2061 м', image: 'images/goverla.jpg', category: 'Гори' },
+        { id: 2, title: 'Туркул', text: 'Чорногора · 1933 м', image: 'images/turkul.jpeg', category: 'Гори' },
+        { id: 3, title: 'Озеро Несамовите', text: 'найвище озеро · 1750 м', image: 'images/nesamovyte.jpeg', category: 'Озера' },
+        { id: 4, title: 'Бануш і бринза', text: 'Гуцульська кухня', image: 'images/banush.jpg', category: 'Культура' }
       ];
 
+      const toggleTheme = () => {
+        setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+      };
+
+      const filteredTours = filter === 'Усі' 
+        ? tours 
+        : tours.filter(t => t.category === filter);
+
       return (
-        <div>
-          <Header />
-          <main className="section">
-            <h2>Популярні тури (React Map)</h2>
-            <div className="cards cards--wide">
-              {tours.map(tour => (
-                <Card 
-                  key={tour.id} 
-                  title={tour.title} 
-                  text={tour.text} 
-                  image={tour.image} 
-                />
+        <div className={theme === 'light' ? 'bg-gray-100 text-gray-900 min-h-screen' : 'bg-gray-950 text-white min-h-screen'}>
+          <Header theme={theme} toggleTheme={toggleTheme} />
+
+          <main className="max-w-6xl mx-auto px-4 py-8">
+            {/* Кнопки фільтрації (Крок 5) */}
+            <div className="flex gap-2 justify-center mb-8">
+              {['Усі', 'Гори', 'Озера', 'Культура'].map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setFilter(cat)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    filter === cat 
+                      ? 'bg-red-600 text-white' 
+                      : 'bg-white/10 hover:bg-white/20 text-gray-300'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {filteredTours.map(tour => (
+                <Card key={tour.id} {...tour} />
               ))}
             </div>
           </main>
-          <Footer />
         </div>
       );
     }
 
-    const rootElement = document.getElementById('root');
-    const root = ReactDOM.createRoot(rootElement);
+    const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
 </body>
