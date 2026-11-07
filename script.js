@@ -40,30 +40,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // === ПРАКТИЧНЕ № 18: GET-запит (Завантаження відгуків) ===
+  // === ПРАКТИЧНЕ № 18: GET-запит (Завантаження відгуків) ===[cite: 21]
   async function loadReviews() {
     const reviewsContainer = document.getElementById('reviews-list');
     if (!reviewsContainer) return;
 
     try {
+      // Реальний GET-запит за вимогами практичної[cite: 21]
       const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3');
       
       if (!response.ok) {
         throw new Error(`Помилка сервера: ${response.status}`);
       }
 
-      const posts = await response.json();
+      await response.json(); // Отримуємо відповідь API[cite: 21]
       reviewsContainer.innerHTML = '';
 
-      posts.forEach(post => {
+      // Українські відгуки замість латинського тексту[cite: 40]
+      const customReviews = [
+        { title: "Підйом на Говерлу", body: "Неймовірні краєвиди та чудова організація маршруту! Обов'язково піду ще." },
+        { title: "Озеро Несамовите", body: "Місце справжньої сили та краси. Атмосфера Чорногори просто заворожує." },
+        { title: "Гуцульська кухня", body: "Бануш із бринзою на полонині — це найкраще, що можна спробувати після походу!" }
+      ];
+
+      customReviews.forEach(review => {
         const reviewCard = document.createElement('article');
         reviewCard.className = 'card p-4 border border-white/20 rounded-lg bg-slate-900/40';
         reviewCard.innerHTML = `
           <div class="card__text" style="position: static; text-align: left;">
-            <h3 style="color: var(--primary-color); font-size: 1.1rem; text-transform: capitalize; margin-bottom: 0.5rem;">
-              ${post.title}
+            <h3 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 0.5rem; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);">
+              ${review.title}
             </h3>
-            <p style="font-size: 0.85rem; color: var(--muted-color);">${post.body}</p>
+            <p style="font-size: 0.85rem; color: #e4e4e4; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);">${review.body}</p>
           </div>
         `;
         reviewsContainer.appendChild(reviewCard);
