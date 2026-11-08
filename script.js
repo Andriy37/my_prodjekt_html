@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // === ПРАКТИЧНЕ № 14: Основи DOM ===[cite: 7]
+
   const availableTours = ["Говерла", "Туркул", "Шпиці", "Кукул"];
   console.log("Доступні тури в Карпатах:", availableTours);
 
@@ -12,7 +12,23 @@ document.addEventListener('DOMContentLoaded', () => {
     copyElement.textContent = `© ${currentYear} Carpathian Trails. Усі права захищено.`;
   }
 
-  // === ПРАКТИЧНЕ № 15: Перемикач теми ===[cite: 5]
+
+  const burgerBtn = document.getElementById('burger-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (burgerBtn && navLinks) {
+    burgerBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('nav__links--open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('nav__links--open');
+      });
+    });
+  }і
+
+
   const root = document.documentElement;
   const themeBtn = document.getElementById('theme-toggle');
   
@@ -40,23 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // === ПРАКТИЧНЕ № 18: GET-запит (Завантаження відгуків) ===[cite: 21]
+
   async function loadReviews() {
     const reviewsContainer = document.getElementById('reviews-list');
     if (!reviewsContainer) return;
 
     try {
-      // Реальний GET-запит за вимогами практичної[cite: 21]
       const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3');
       
       if (!response.ok) {
         throw new Error(`Помилка сервера: ${response.status}`);
       }
 
-      await response.json(); // Отримуємо відповідь API[cite: 21]
+      await response.json();
       reviewsContainer.innerHTML = '';
 
-      // Українські відгуки замість латинського тексту[cite: 40]
       const customReviews = [
         { title: "Підйом на Говерлу", body: "Неймовірні краєвиди та чудова організація маршруту! Обов'язково піду ще." },
         { title: "Озеро Несамовите", body: "Місце справжньої сили та краси. Атмосфера Чорногори просто заворожує." },
@@ -84,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadReviews();
 
-  // === ПРАКТИЧНЕ № 18: POST-запит (Форма зворотного зв'язку) ===[cite: 21]
+
   const contactForm = document.querySelector('.form');
   const messageBox = document.getElementById('form-message');
 
