@@ -13,22 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  const burgerBtn = document.getElementById('burger-toggle');
-  const navLinks = document.getElementById('nav-links');
-
-  if (burgerBtn && navLinks) {
-    burgerBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('nav__links--open');
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('nav__links--open');
-      });
-    });
-  }і
-
-
   const root = document.documentElement;
   const themeBtn = document.getElementById('theme-toggle');
   
@@ -53,6 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
         themeBtn.setAttribute('aria-pressed', 'true');
         localStorage.setItem('theme', 'light');
       }
+    });
+  }
+
+  
+  const burgerBtn = document.getElementById('burger-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (burgerBtn && navLinks) {
+    burgerBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('nav__links--open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('nav__links--open');
+      });
     });
   }
 

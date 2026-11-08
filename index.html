@@ -3,12 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Час подорожей — Карпати</title>
+  <title>Час подорожей — Карпати | Carpathian Trails</title>
+  
+
+  <meta name="description" content="Carpathian Trails — відкривай для себе найкращі гірські тури, озера та культуру Гуцульщини. Походи на Говерлу, Туркул та Шпиці.">
+  <meta name="keywords" content="Карпати, тури, Говерла, Чорногора, походи в гори, Несамовите, Гуцульщина">
+  <meta name="author" content="Andrii Drahanchuk">
+  <meta name="robots" content="index, follow">
+
+
+  <meta property="og:title" content="Час подорожей — Карпати | Carpathian Trails">
+  <meta property="og:description" content="Гори, полонини й хмари під ногами. Пізнавай Карпати, бережи їх і повертайся сюди знову.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/goverla.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
   <style>
-    /* Адаптивні стилі для бургер-меню та розташування кнопки теми */
+
     .nav {
       display: flex;
       align-items: center;
@@ -57,10 +71,7 @@
 </head>
 <body>
 
-
   <header class="hero" id="home">
-
-
     <div class="hero__bg" aria-hidden="true">
       <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
         <polygon class="ridge ridge--back" points="0,500 0,260 150,190 300,240 430,150 600,220 760,140 900,230 1050,170 1200,250 1200,500" />
@@ -85,7 +96,7 @@
 
       <div class="nav__controls">
         <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">Світла тема</button>
-        <button id="burger-toggle" class="burger-toggle" type="button" aria-label="Меню">☰</button>
+        <button id="burger-toggle" class="burger-toggle" type="button" aria-label="Переключити меню">☰</button>
       </div>
     </nav>
 
@@ -102,14 +113,13 @@
   </header>
 
   <main>
-
     <section class="section" id="tours">
       <h2>Популярні тури</h2>
       <p class="section__sub">популярні зараз</p>
 
       <div class="cards">
         <article class="card card--hoverla">
-          <img class="card__photo" src="images/goverla.jpg" alt="Вершина Говерла" loading="lazy">
+          <img class="card__photo" src="images/goverla.jpg" alt="Вершина гори Говерла" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Говерла</h3>
             <p>Чорногора · 2061 м</p>
@@ -117,7 +127,7 @@
         </article>
 
         <article class="card card--turkul">
-          <img class="card__photo" src="images/turkul.jpeg" alt="Гора Туркул на заході сонця" loading="lazy">
+          <img class="card__photo" src="images/turkul.jpeg" alt="Гора Туркул на заході сонця" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Туркул</h3>
             <p>Чорногора · 1933 м</p>
@@ -125,7 +135,7 @@
         </article>
 
         <article class="card card--shpytsi">
-          <img class="card__photo" src="images/shpytsi.jpg" alt="Кам'яні шпилі гори Шпиці" loading="lazy">
+          <img class="card__photo" src="images/shpytsi.jpg" alt="Кам'яні шпилі гори Шпиці" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Шпиці</h3>
             <p>Чорногора · 1863 м</p>
@@ -133,7 +143,7 @@
         </article>
 
         <article class="card card--kukul">
-          <img class="card__photo" src="images/kukul.jpg" alt="Гора Кукул узимку" loading="lazy">
+          <img class="card__photo" src="images/kukul.jpg" alt="Гора Кукул узимку" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Кукул</h3>
             <p>Чорногора · 1539 м</p>
@@ -143,14 +153,13 @@
       <a class="more" href="#lakes">Далі: озера й полонини</a>
     </section>
 
-
     <section class="section" id="lakes">
       <h2>Озера й полонини</h2>
       <p class="section__sub">де відпочиває погляд</p>
 
       <div class="cards cards--wide">
         <article class="card card--nesamovyte">
-          <img class="card__photo" src="images/nesamovyte.jpeg" alt="Озеро Несамовите на заході сонця" loading="lazy">
+          <img class="card__photo" src="images/nesamovyte.jpeg" alt="Озеро Несамовите на заході сонця" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Несамовите</h3>
             <p>найвище озеро Чорногори · 1750 м</p>
@@ -158,7 +167,7 @@
         </article>
 
         <article class="card card--brebeneskul">
-          <img class="card__photo" src="images/brebeneskul.jpg" alt="Озеро Бребенескул серед зелених схилів" loading="lazy">
+          <img class="card__photo" src="images/brebeneskul.jpg" alt="Озеро Бребенескул серед зелених схилів" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Бребенескул</h3>
             <p>найвище озеро України · 1801 м</p>
@@ -166,7 +175,7 @@
         </article>
 
         <article class="card card--drahobrat">
-          <img class="card__photo" src="images/drahobrat.jpg" alt="Гірське озеро на полонині Драгобрат" loading="lazy">
+          <img class="card__photo" src="images/drahobrat.jpg" alt="Гірське озеро на полонині Драгобрат" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Драгобрат</h3>
             <p>гірська полонина й курорт</p>
@@ -174,7 +183,7 @@
         </article>
 
         <article class="card card--pozhyzhevska">
-          <img class="card__photo" src="images/pozhyzhevska.jpg" alt="Полонина Пожижевська під хмарами" loading="lazy">
+          <img class="card__photo" src="images/pozhyzhevska.jpg" alt="Полонина Пожижевська під хмарами" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Пожижевська</h3>
             <p>полонина під г. Говерла · 1822 м</p>
@@ -184,14 +193,13 @@
       <a class="more" href="#hutsul">Далі: Гуцульщина</a>
     </section>
 
-
     <section class="section" id="hutsul">
       <h2>Культура Гуцульщини</h2>
       <p class="section__sub">традиції гірського краю</p>
 
       <div class="cards cards--wide">
         <article class="card card--banush">
-          <img class="card__photo" src="images/banush.jpg" alt="Бануш і бринза на дерев'яному столі" loading="lazy">
+          <img class="card__photo" src="images/banush.jpg" alt="Бануш і бринза на дерев'яному столі" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Бануш і бринза</h3>
             <p>кукурудзяна каша на вершках і овеча бринза</p>
@@ -199,7 +207,7 @@
         </article>
 
         <article class="card card--vyshyvka">
-          <img class="card__photo" src="images/vyshyvka.jpg" alt="Гуцульська вишиванка з орнаментом" loading="lazy">
+          <img class="card__photo" src="images/vyshyvka.jpg" alt="Гуцульська вишиванка з орнаментом" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Гуцульська вишивка</h3>
             <p>орнаменти кептарів і сорочок</p>
@@ -207,7 +215,7 @@
         </article>
 
         <article class="card card--trembita">
-          <img class="card__photo" src="images/trembita.jpg" alt="Гуцул грає на трембіті в горах" loading="lazy">
+          <img class="card__photo" src="images/trembita.jpg" alt="Гуцул грає на трембіті в горах" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Трембіта</h3>
             <p>довгий дерев'яний ріг, голос полонин</p>
@@ -215,7 +223,7 @@
         </article>
 
         <article class="card card--church">
-          <img class="card__photo" src="images/cerkva.jpg" alt="Дерев'яна гуцульська церква" loading="lazy">
+          <img class="card__photo" src="images/cerkva.jpg" alt="Дерев'яна гуцульська церква" width="400" height="250" loading="lazy">
           <div class="card__text">
             <h3>Дерев'яні церкви</h3>
             <p>гуцульська сакральна архітектура</p>
@@ -228,7 +236,7 @@
       <h2>Останні відгуки</h2>
       <p class="section__sub">завантажено з сервера</p>
       <div id="reviews-list" class="cards cards--wide">
-        <p class="text-center text-gray-400">Завантаження відгуків...</p>
+        <p style="color: var(--muted-color); text-align: center;">Завантаження відгуків...</p>
       </div>
     </section>
 
