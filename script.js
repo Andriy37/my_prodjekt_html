@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.remove('nav__links--open');
       });
     });
-  }
+  }і
 
 
   const root = document.documentElement;
