@@ -7,6 +7,53 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Адаптивні стилі для бургер-меню та розташування кнопки теми */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .nav__controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .burger-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+
+    @media (max-width: 768px) {
+      .burger-toggle {
+        display: block;
+      }
+
+      .nav__links {
+        display: none;
+        width: 100%;
+        order: 3;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav__links.nav__links--open {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,14 +74,19 @@
 
     <nav class="nav">
       <a class="logo" href="#home">Carpathian Trails</a>
-      <ul class="nav__links">
+      
+      <ul id="nav-links" class="nav__links">
         <li><a href="#home">Головна</a></li>
         <li><a href="#tours">Тури</a></li>
         <li><a href="#lakes">Озера й полонини</a></li>
         <li><a href="#hutsul">Гуцульщина</a></li>
         <li><a href="#contacts">Контакти</a></li>
       </ul>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">Світла тема</button>
+
+      <div class="nav__controls">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">Світла тема</button>
+        <button id="burger-toggle" class="burger-toggle" type="button" aria-label="Меню">☰</button>
+      </div>
     </nav>
 
     <div class="hero__content">
